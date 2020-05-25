@@ -19,6 +19,10 @@
 			expression="org.springframework.stereotype.Controller"/>
 			<context:include-filter type="annotation" 
 			expression="org.springframework.web.bind.annotation.RestController"/>
+			<context:exclude-filter type="annotation" 
+			expression="org.springframework.stereotype.Service"/>
+			<context:exclude-filter type="annotation" 
+			expression="org.springframework.stereotype.Repository"/>
 		</context:component-scan>
 		
 		<!-- 开启springmvc   -->
@@ -28,6 +32,8 @@
 		
 		<!-- 将静态资源 （css js）交给WEB容器  default的servlet处理 -->
 		<mvc:default-servlet-handler/>
+		
+		<mvc:resources location="file:E:/pic/" mapping="/pic/**"/>
 		
 		<!-- 整合thymeleaf -->
 		<bean id="templateResolver"
@@ -51,4 +57,7 @@
 		</bean>
 		
 		
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="maxInMemorySize" value="2097152000"/>
+		</bean>
 </beans>

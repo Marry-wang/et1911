@@ -1,0 +1,63 @@
+create table t_springmvc_user(
+    id int primary key auto_increment,
+    name varchar (128) not null,
+    password varchar (64) not null,
+    age int not null
+)
+
+
+drop table if exists t_springmvc_dict;
+
+create table if not exists t_springmvc_dict(
+id int primary key auto_increment,
+group_id varchar(32) not null comment "字典分组",
+name varchar (32) not null comment  "字典名称",
+value varchar (12) not null comment "字典值"，
+sort int not null comment "排序字段"
+);
+
+
+
+insert into t_springmvc_dict values(null,'level','小型车','1',1);
+insert into t_springmvc_dict values(null,'level','中型车','1',1);
+insert into t_springmvc_dict values(null,'level','大型车','1',1);
+insert into t_springmvc_dict values(null,'level','SUV','1',1);
+
+insert into t_springmvc_dict values(null,'gearbox','自动','1',1);
+insert into t_springmvc_dict values(null,'gearbox','手动','2',2);
+
+t_springmvc_car
+insert into t_springmvc_dict values(null,'output_volume','1.0','1',1);
+insert into t_springmvc_dict values(null,'output_volume','1.1-1.6','2',2);
+insert into t_springmvc_dict values(null,'output_volume','1.7-2.0','3',3);
+insert into t_springmvc_dict values(null,'output_volume','2.0以上','4',4);
+
+
+select id,group_id as groupId,name,value,sort
+		from t_springmvc_dict
+		where group_id = 'level' order by sort
+
+
+drop table if exists t_springmvc_car;
+create table if not exists t_springmvc_car(
+	id int primary key auto_increment,
+	brand varchar(64) not null comment '品牌',
+	series varchar(64) not null comment '车系',
+	price int not null comment '价格',
+	licensing_time VARCHAR(7) comment '上牌时间',
+	level varchar(1) comment '级别',
+	gearbox varchar(1) comment '变速箱',
+	output_volume varchar(1) comment '排量',
+	mileage int comment '里程(万公里)',
+	location varchar(64) comment '归属地',
+	pic varchar(128) comment '图片地址',
+	summary varchar(512) comment '概述',
+	create_time datetime comment '创建时间'
+) ;
+
+
+
+
+
+
+
