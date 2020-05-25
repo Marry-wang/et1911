@@ -107,6 +107,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			     <artifactId>commons-fileupload</artifactId>
 			     <version>1.3.3</version>
 		   </dependency>
+		   <!-- 后端校验   hibernate -->
+		   <dependency>
+			     <groupId>org.hibernate.validator</groupId>
+			     <artifactId>hibernate-validator</artifactId>
+			     <version>6.1.2.Final</version>
+		   </dependency>
 		</dependencies>
 	</dependencyManagement>
 
