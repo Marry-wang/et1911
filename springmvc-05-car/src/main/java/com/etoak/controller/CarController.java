@@ -2,7 +2,10 @@ package com.etoak.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.ArrayUtils;
 
 import com.etoak.bean.Car;
 import com.etoak.bean.CarVo;
@@ -48,10 +52,11 @@ public class CarController {
 	public PageVo<CarVo> queryList(
 			@RequestParam(required=false,defaultValue="1")int pageNum,
 			@RequestParam(required=false,defaultValue="8")int pageSize,
-			CarVo carVo
+			CarVo carVo,String[] priceList
 			){
-		return carService.queryList(pageNum, pageSize, carVo);
+		return carService.queryList(pageNum, pageSize, carVo,priceList);
 	}
+	
 	
 	@RequestMapping("/add")
 	public String add(MultipartFile file,@Valid Car car,
@@ -103,6 +108,7 @@ public class CarController {
 	@GetMapping("/getSeries")
 	@ResponseBody
 	public List<String>getSeries(String brand){
+		System.out.println(brand);
 		return carService.getSeriesByBrand(brand);
 	}
 	

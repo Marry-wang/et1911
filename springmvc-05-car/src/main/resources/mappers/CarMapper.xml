@@ -51,7 +51,7 @@
 		    t.create_time as createTime,
 		    t2.name as levelName,
 		    t3.name as gearboxName,
-		    t4.name as outputVolume
+		    t4.name as outputVolumeName
 		 from t_springmvc_car t
 		 left join t_springmvc_dict t2 on t.level=t2.value and
 		 t2.group_id='level'
@@ -59,6 +59,44 @@
 		 t3.group_id='gearbox'
 		 left join t_springmvc_dict t4 on t.output_volume=t4.value and
 		 t4.group_id='output_volume'
+		 <where>
+			<if test="brand !=null and brand !='' ">
+				 and brand = #{brand}
+			</if>
+			<if test="series !=null and series !='' ">
+				 and series = #{series}
+			</if>
+			<if test="level !=null and level !='' ">
+				 and level = #{level}
+			</if>
+			<if test="gearbox !=null and gearbox !='' ">
+				 and gearbox = #{gearbox}
+			</if>
+			<if test="outputVolume !=null and outputVolume !='' ">
+				 and output_volume = #{outputVolume}
+			</if>
+			<if test="location !=null and location !='' ">
+				 and location like CONCAT('%',#{location},'%')
+			</if>
+			<if test="priceMapList !=null and priceMapList.size()!=0">
+				and
+				<foreach collection="priceMapList" item="priceMap"
+				open="(" close=")" separator="OR">
+					price between #{priceMap.start} and #{priceMap.end}
+				</foreach>		
+			</if>
+			<if test="startYear !=null and startYear != 0">
+				AND str_to_date(licensing_time, '%Y-%m') >= 
+				date_sub(curdate(),interval #{startYear} YEAR)
+			</if>
+			
+			<if test="endYear !=null and startYear != 0">
+				<![CDATA[
+				AND str_to_date(licensing_time, '%Y-%m') <= 
+				date_sub(curdate(),interval #{endYear} YEAR)
+				]]>
+			</if>
+		</where>
 	</select>
 	
 	<select id="getAllBrand" resultType="string" >
