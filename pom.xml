@@ -113,6 +113,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			     <artifactId>hibernate-validator</artifactId>
 			     <version>6.1.2.Final</version>
 		   </dependency>
+		   
+		   <dependency>
+			     <groupId>commons-codec</groupId>
+			     <artifactId>commons-codec</artifactId>
+			     <version>1.13</version>
+		   </dependency>
 		</dependencies>
 	</dependencyManagement>
 

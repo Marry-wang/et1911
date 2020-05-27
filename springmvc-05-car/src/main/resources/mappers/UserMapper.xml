@@ -4,5 +4,9 @@
 	<select id="getById" parameterType="int" resultType="com.etoak.bean.User">
 		select * from t_springmvc_user where id =#{value}
 	</select>
+	
+	<select id="getByNameAndPassword"  resultType="com.etoak.bean.User">
+		select * from t_springmvc_user where name =#{name} and password=#{password} 
+	</select>
 </mapper>
   

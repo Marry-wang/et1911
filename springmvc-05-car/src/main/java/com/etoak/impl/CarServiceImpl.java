@@ -30,7 +30,10 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public PageVo<CarVo> queryList(int pageNum, int pageSize, CarVo carVo, String[] priceList) {
+	public PageVo<CarVo> queryList(int pageNum, int pageSize,
+			CarVo carVo, String[] priceList) {
+		
+		
 		List<Map<String,Integer>>priceMapList=this.handlePrice(priceList);
 		carVo.setPriceMapList(priceMapList);
 		

@@ -40,6 +40,7 @@
 		
 		<mvc:resources location="file:E:/pic/" mapping="/pic/**"/>
 		
+		
 		<!-- 整合thymeleaf -->
 		<bean id="templateResolver"
 		class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
@@ -65,4 +66,23 @@
 		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<property name="maxInMemorySize" value="2097152000"/>
 		</bean>
+		
+		
+		<mvc:view-controller path="/" view-name="index" />
+		
+		<mvc:view-controller path="/user/toLogin" view-name="login"/>
+		
+		<mvc:interceptors>
+			<mvc:interceptor>
+				<mvc:mapping path="/**"/>
+				
+				<mvc:exclude-mapping path="/static/**"/>
+				<mvc:exclude-mapping path="/code"/>
+				<mvc:exclude-mapping path="/user/toLogin"/>
+				<mvc:exclude-mapping path="/user/login"/>
+				<bean class="com.etoak.interceptor.LoginTnterceptor"></bean>
+				
+			</mvc:interceptor>
+		</mvc:interceptors>
+		
 </beans>
