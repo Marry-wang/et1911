@@ -16,7 +16,9 @@ import com.etoak.VerifyCode;
 public class CodeController {
 
 	@RequestMapping("/code")
-	public void code(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public void code(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
 		//创建验证码对象  
 		VerifyCode code =new VerifyCode();
 		BufferedImage image =code.createImage();

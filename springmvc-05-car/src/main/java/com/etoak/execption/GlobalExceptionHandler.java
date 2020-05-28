@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Et1911LoginException.class)
 	public ModelAndView handLoginException(Et1911LoginException e) {
 		String msg=e.getMessage();
-		log.error(msg,e);
+		log.error(msg,e);//日志打印   异常信息：12123123121211
 		
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("error",msg);
