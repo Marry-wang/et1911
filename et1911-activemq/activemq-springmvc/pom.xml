@@ -7,9 +7,7 @@
     <artifactId>et1911-activemq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.etoak.et1911</groupId>
   <artifactId>activemq-springmvc</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
   <properties>
@@ -115,6 +113,37 @@
 		     <groupId>commons-codec</groupId>
 		     <artifactId>commons-codec</artifactId>
 	   </dependency>
+	   
+	   <dependency>
+  			<groupId>javax.jms</groupId>
+  			<artifactId>javax.jms-api</artifactId>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-jms</artifactId>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>org.apache.activemq</groupId>
+  			<artifactId>activemq-pool</artifactId>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>org.apache.activemq</groupId>
+  			<artifactId>activemq-broker</artifactId>
+  			<exclusions>
+  				<exclusion>
+  					<groupId>com.fasterxml.jackson.core</groupId>
+  					<artifactId>jackson.databind</artifactId>
+  				</exclusion>
+  			</exclusions>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>com.alibaba</groupId>
+  			<artifactId>fastjson</artifactId>
+  		</dependency>
   </dependencies>
   <build>
     <finalName>activemq-springmvc</finalName>

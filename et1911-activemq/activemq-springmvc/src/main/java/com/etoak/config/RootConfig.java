@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,7 @@ import com.github.pagehelper.PageInterceptor;
 	)
 
 @MapperScan(basePackages="com.etoak.mapper")
+@Import(value= {ActiveMqConfig.class})
 public class RootConfig {
 	
 	@Bean
