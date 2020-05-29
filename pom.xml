@@ -13,6 +13,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 	    <module>springmvc-03</module>
 	    <module>springmvc-04-param</module>
 	    <module>springmvc-05-car</module>
+	    <module>et1911-activemq</module>
 	</modules>
 
 	<dependencyManagement>
