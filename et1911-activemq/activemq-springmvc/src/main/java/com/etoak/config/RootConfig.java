@@ -65,6 +65,7 @@ public class RootConfig {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		PageInterceptor plugin=new PageInterceptor();
 		Properties props =new Properties();
 		

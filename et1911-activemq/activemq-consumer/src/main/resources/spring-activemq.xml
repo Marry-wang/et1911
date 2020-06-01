@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<context:component-scan base-package="com.etoak"></context:component-scan>
+	<!-- 引入email的ioc容器 -->
+	<import resource="classpath:spring-email.xml"></import>
+	<!-- ActiveMQConnectionFactory -->
+	<bean id="mqFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<constructor-arg name="userName" value=""></constructor-arg>
+		<constructor-arg name="password" value=""></constructor-arg>
+		<constructor-arg name="brokerURL" value="tcp://localhost:61616"></constructor-arg>
+		<property name="useAsyncSend" value="true"></property>
+	</bean>
+	<!-- CachingConnectionFactory -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<constructor-arg name="targetConnectionFactory" ref="mqFactory"></constructor-arg>
+		<property name="sessionCacheSize" value="20"></property>
+	</bean>
+	<!-- 配置队列 -->
+	<bean id="emailQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<!-- 队列名称 -->
+		<constructor-arg name="name" value="email"></constructor-arg>
+	</bean>
+	<!-- 配置监听器(自定义的bean) -->
+	<bean id="EmailQueueListener" class="com.etoak.listener.EmailQueueListener"></bean>
+	<!-- 监听器容器 -->
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+		<property name="destination" ref="emailQueue"></property>
+		<property name="messageListener" ref="EmailQueueListener"></property>
+		<!-- 设置为手动签收 -->
+		<property name="sessionAcknowledgeMode" value="2"></property>
+	</bean>
+</beans>
