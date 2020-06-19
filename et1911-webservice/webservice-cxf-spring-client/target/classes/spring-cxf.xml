@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:core="http://cxf.apache.org/core"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://cxf.apache.org/jaxws
+	http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/core
+	http://cxf.apache.org/schemas/core.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:component-scan base-package="com.etoak"></context:component-scan>
+
+	<jaxws:client id="uservice" address="http://localhost:8080/ws/user?wsdl"
+				  serviceClass="com.etoak.service.Uservice">
+		<jaxws:outInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+
+			<bean class="com.etoak.interceptor.AuthInterceptor">
+				<constructor-arg name="name" value="et1911"/>
+				<constructor-arg name="password" value="123"/>
+			</bean>
+		</jaxws:outInterceptors>
+	</jaxws:client>
+</beans>

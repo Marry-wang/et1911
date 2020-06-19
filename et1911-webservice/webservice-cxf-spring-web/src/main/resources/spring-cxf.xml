@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:core="http://cxf.apache.org/core"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://cxf.apache.org/jaxws
+	http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/core
+	http://cxf.apache.org/schemas/core.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:component-scan base-package="com.etoak"></context:component-scan>
+
+	<!--
+		1.创建JaxWsServerFactoryBean
+		2.设置wsdl地址
+		3.设置要暴露的服务
+		4.设置服务实现
+		5.创建服务并启动
+	-->
+
+	<jaxws:server address="/user" serviceClass="com.etoak.service.Uservice">
+		<!--<jaxws:inInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingInInterceptor">
+
+			</bean>
+		</jaxws:inInterceptors>-->
+		<jaxws:serviceBean>
+			<ref bean="userviceImpl"></ref>
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+	<!--全局拦截器-->
+	<core:bus>
+		<core:inInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+			<!--自定义拦截器-->
+			<bean class="com.etoak.interceptor.AuthInInterceptor">
+				<constructor-arg name="phase" value="pre-invoke" />
+			</bean>
+		</core:inInterceptors>
+	</core:bus>
+
+
+</beans>

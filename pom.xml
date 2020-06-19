@@ -15,7 +15,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 	    <module>springmvc-05-car</module>
 	    <module>et1911-activemq</module>
         <module>et1911-webservice</module>
-    </modules>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -44,6 +44,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-tx</artifactId>
+				<version>5.2.2.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
 				<version>5.2.2.RELEASE</version>
 			</dependency>
 			<!-- 简化Java Bean代码插件 -->
@@ -121,6 +126,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			     <artifactId>commons-codec</artifactId>
 			     <version>1.13</version>
 		   </dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
 

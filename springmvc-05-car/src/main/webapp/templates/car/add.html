@@ -18,7 +18,7 @@
 	</div>
 		<div id="form">
 			<form class="form-horizontal" role="form" method="post" id="addForm"
-                   enctype="multipart/form-data" th:action=@{/car/add}>
+                   enctype="multipart/form-data" th:action="@{/car/add}">
 				<!-- 1. 品牌 -->
 				<div class="form-group">
 					<label for="brand" class="col-sm-2 control-label">品牌</label>
@@ -154,7 +154,7 @@
 				et1911.queryGearbox();
 				
 				
-				//et1911.validateForm();
+				et1911.validateForm();
 			})
 			
 			let et1911 = {

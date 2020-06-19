@@ -16,6 +16,8 @@
         <module>webservice-jdk-client</module>
         <module>webservice-cxf-server</module>
         <module>webservice-cxf-client</module>
+        <module>webservice-cxf-spring-web</module>
+        <module>webservice-cxf-spring-client</module>
 
     </modules>
 
