@@ -25,7 +25,7 @@ public class Car {
 	@Min(value=1,message="价格最小为1")
 	@Max(value=100,message="价格最大为100")
 	private Integer price;
-	
+
 	private String licensingTime;
 	private String level;
 	private String gearbox;
