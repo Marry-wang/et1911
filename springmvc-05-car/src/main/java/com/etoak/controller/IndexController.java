@@ -36,7 +36,7 @@ public class IndexController {
 		request.getSession().setAttribute("sessionUser", 
 				new User(2,"sessionUser","",21));
 		
-		List<User>userList=new ArrayList<>();
+		List<User>userList=new ArrayList<User>();
 		request.setAttribute("userList", userList);
 		userList.add(new User(3,"张三","",28));
 		userList.add(new User(4,"里斯","",22));

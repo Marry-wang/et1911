@@ -29,20 +29,20 @@
 
     <bean id="dataSource"
           class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/et1911"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="etoak"></property>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/et1911"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
     </bean>
 
     <bean
             class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage"
-                  value="com.etoak.bean"></property>
+                  value="com.etoak.bean"/>
 
         <property name="mapperLocations"
-                  value="classpath:mappers/*.xml"></property>
+                  value="classpath:mappers/*.xml"/>
 
         <property name="plugins">
             <list>
@@ -58,7 +58,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.etoak.mapper"></property>
+        <property name="basePackage" value="com.etoak.mapper"/>
     </bean>
 
 

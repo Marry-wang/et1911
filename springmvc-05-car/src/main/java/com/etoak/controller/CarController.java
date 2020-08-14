@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -29,7 +30,7 @@ import com.etoak.bean.PageVo;
 import com.etoak.execption.ParamException;
 import com.etoak.service.CarService;
 
-import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/car")

@@ -43,8 +43,7 @@ public class CarServiceImpl implements CarService {
 		PageHelper.startPage(pageNum,pageSize);
 		
 		List<CarVo> carList=carMapper.queryList(carVo);
-		
-		
+
 		
 		PageInfo<CarVo> pageInfo=new PageInfo<CarVo>(carList);
 		
@@ -77,12 +76,12 @@ public class CarServiceImpl implements CarService {
 	}
 
 	private List<Map<String, Integer>> handlePrice(String[] priceList) {
-		List<Map<String,Integer>>priceMapList=new ArrayList<>();
+		List<Map<String,Integer>>priceMapList=new ArrayList<Map<String, Integer>>();
 		
 		if(!ArrayUtils.isEmpty(priceList)) {
 			for(String priceStr:priceList) {
 				String [] prices=priceStr.split("-");
-				Map<String,Integer>priceMap=new HashMap<>();
+				Map<String,Integer>priceMap=new HashMap<String, Integer>();
 				priceMap.put("start",Integer.parseInt(prices[0]));
 				priceMap.put("end",Integer.parseInt(prices[1]));
 				priceMapList.add(priceMap);

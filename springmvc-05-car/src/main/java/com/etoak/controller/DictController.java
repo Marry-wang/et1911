@@ -23,7 +23,7 @@ public class DictController {
 	@Autowired
 	DictService dictService;
 	/**
-	 * @param path
+	 * @param groupId
 	 */
 	@GetMapping("/{groupId}")
 	public List<Dict> queryList(@PathVariable String groupId){

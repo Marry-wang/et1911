@@ -21,6 +21,7 @@ public class ActiveMqConfig {
 		factory.setUseAsyncSend(true);
 		return factory;
 	}
+
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		CachingConnectionFactory factory=new
